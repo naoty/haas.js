@@ -10,7 +10,7 @@ module.exports = (grunt) ->
           "js/haas.min.js": "js/haas.js"
     regarde:
       js:
-        files: "js/haas.js"
+        files: "coffee/haas.coffee"
         tasks: ["coffee", "uglify"]
 
   grunt.loadNpmTasks "grunt-regarde"
