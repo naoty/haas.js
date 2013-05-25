@@ -1,0 +1,19 @@
+{
+    "name": "haas.js",
+    "version": "0.0.1",
+    "author": "Naoto Kaneko <naoty.k@gmail.com> (http://naoty.info)",
+    "homepage": "https://github.com/naoty/haas.js",
+    "description": "Library to display HTML as a slide",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/naoty/haas.js"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "coffee-script": "*",
+        "grunt": "*",
+        "grunt-regarde": "*",
+        "grunt-contrib-coffee": "*",
+        "grunt-contrib-uglify": "*"
+    }
+}
