@@ -1,6 +1,13 @@
 {
     "name": "haas.js",
-    "version": "0.0.1",
+    "version": "1.0.0",
+    "author": "Naoto Kaneko <naoty.k@gmail.com> (http://naoty.info)",
+    "main": "js/haas.js",
+    "ignore": [
+        ".gitignore",
+        "package.json",
+        "index.html"
+    ],
     "dependencies": {
         "jquery": "latest"
     }

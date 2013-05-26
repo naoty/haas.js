@@ -1,3 +1,11 @@
+###
+haas.js
+https://github.com/naoty/haas.js
+MIT licensed
+
+Copyright (C) 2013 Naoto Kaneko, http://naoty.info
+###
+
 $ ->
   haas = new Haas()
   haas.display(1)

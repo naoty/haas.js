@@ -1,6 +1,6 @@
 {
     "name": "haas.js",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "author": "Naoto Kaneko <naoty.k@gmail.com> (http://naoty.info)",
     "homepage": "https://github.com/naoty/haas.js",
     "description": "Library to display HTML as a slide",
