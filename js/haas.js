@@ -11,10 +11,14 @@ Copyright (C) 2013 Naoto Kaneko, http://naoty.info
   var Haas;
 
   $(function() {
-    var haas;
+    var haas, page;
 
     haas = new Haas();
-    haas.display(1);
+    page = Number(location.hash.slice(1));
+    if (page < 1 || page > haas.sections.length) {
+      page = 1;
+    }
+    haas.display(page);
     return haas.observeKeyEvent();
   });
 
@@ -27,8 +31,9 @@ Copyright (C) 2013 Naoto Kaneko, http://naoty.info
     Haas.prototype.display = function(page) {
       var pageIndex;
 
-      pageIndex = page - 1;
-      location.hash = "#" + page;
+      this.page = page;
+      pageIndex = this.page - 1;
+      location.hash = "#" + this.page;
       return this.sections.each(function(index, section) {
         if (index === pageIndex) {
           return $(section).show();

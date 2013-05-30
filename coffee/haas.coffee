@@ -8,7 +8,13 @@ Copyright (C) 2013 Naoto Kaneko, http://naoty.info
 
 $ ->
   haas = new Haas()
-  haas.display(1)
+
+  # Display only the page specified at the anchor of URL
+  page = Number(location.hash.slice(1))
+  page = 1 if page < 1 || page > haas.sections.length
+  haas.display(page)
+
+  # Observe key events
   haas.observeKeyEvent()
 
 class Haas
@@ -17,8 +23,9 @@ class Haas
     @page = 1
 
   display: (page) ->
-    pageIndex = page - 1
-    location.hash = "#" + page
+    @page = page
+    pageIndex = @page - 1
+    location.hash = "#" + @page
     @sections.each (index, section) ->
       if index == pageIndex
         $(section).show()
