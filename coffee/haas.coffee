@@ -17,6 +17,9 @@ $ ->
   # Observe key events
   haas.observeKeyEvent()
 
+  # Move to page when browser's go/back event get fired
+  $(window).on "popstate", (e) -> location.reload()
+
 class Haas
   constructor: ->
     @sections = $("section")

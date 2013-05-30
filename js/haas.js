@@ -19,7 +19,10 @@ Copyright (C) 2013 Naoto Kaneko, http://naoty.info
       page = 1;
     }
     haas.display(page);
-    return haas.observeKeyEvent();
+    haas.observeKeyEvent();
+    return $(window).on("popstate", function(e) {
+      return location.reload();
+    });
   });
 
   Haas = (function() {
