@@ -11,30 +11,32 @@ Copyright (C) 2013 Naoto Kaneko, http://naoty.info
   var Haas;
 
   $(function() {
-    var haas, page;
+    var haas;
 
     haas = new Haas();
-    page = Number(location.hash.slice(1));
-    if (page < 1 || page > haas.sections.length) {
-      page = 1;
-    }
-    haas.display(page);
+    haas.load();
     haas.observeKeyEvent();
     return $(window).on("popstate", function(e) {
-      return location.reload();
+      return haas.reload();
     });
   });
 
   Haas = (function() {
     function Haas() {
       this.sections = $("section");
-      this.page = 1;
+      this.initializePage();
     }
 
-    Haas.prototype.display = function(page) {
+    Haas.prototype.initializePage = function() {
+      this.page = Number(location.hash.slice(1));
+      if (this.page < 1 || this.page > this.sections.length) {
+        return this.page = 1;
+      }
+    };
+
+    Haas.prototype.load = function() {
       var pageIndex;
 
-      this.page = page;
       pageIndex = this.page - 1;
       location.hash = "#" + this.page;
       return this.sections.each(function(index, section) {
@@ -46,17 +48,22 @@ Copyright (C) 2013 Naoto Kaneko, http://naoty.info
       });
     };
 
+    Haas.prototype.reload = function() {
+      this.initializePage();
+      return this.load();
+    };
+
     Haas.prototype.next = function() {
       if (this.page !== this.sections.length) {
         this.page++;
-        return this.display(this.page);
+        return this.load();
       }
     };
 
     Haas.prototype.prev = function() {
       if (this.page !== 1) {
         this.page--;
-        return this.display(this.page);
+        return this.load();
       }
     };
 

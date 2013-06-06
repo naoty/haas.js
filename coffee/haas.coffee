@@ -8,25 +8,23 @@ Copyright (C) 2013 Naoto Kaneko, http://naoty.info
 
 $ ->
   haas = new Haas()
-
-  # Display only the page specified at the anchor of URL
-  page = Number(location.hash.slice(1))
-  page = 1 if page < 1 || page > haas.sections.length
-  haas.display(page)
-
-  # Observe key events
+  haas.load()
   haas.observeKeyEvent()
 
   # Move to page when browser's go/back event get fired
-  $(window).on "popstate", (e) -> location.reload()
+  $(window).on "popstate", (e) -> haas.reload()
 
 class Haas
   constructor: ->
     @sections = $("section")
-    @page = 1
+    this.initializePage()
 
-  display: (page) ->
-    @page = page
+  initializePage: ->
+    @page = Number(location.hash.slice(1))
+    @page = 1 if @page < 1 || @page > @sections.length
+
+  # Display only the page specified at the anchor of URL
+  load: ->
     pageIndex = @page - 1
     location.hash = "#" + @page
     @sections.each (index, section) ->
@@ -35,16 +33,21 @@ class Haas
       else
         $(section).hide()
 
+  reload: ->
+    this.initializePage()
+    this.load()
+
   next: ->
     if @page != @sections.length
       @page++
-      this.display(@page)
+      this.load()
 
   prev: ->
     if @page != 1
       @page--
-      this.display(@page)
+      this.load()
 
+  # Observe key events
   observeKeyEvent: ->
     self = this
     $(document).keydown (e) ->
