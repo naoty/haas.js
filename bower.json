@@ -1,6 +1,6 @@
 {
     "name": "haas.js",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "author": "Naoto Kaneko <naoty.k@gmail.com> (http://naoty.info)",
     "main": "js/haas.js",
     "ignore": [
